@@ -3,6 +3,7 @@ package main
 import "core:fmt"
 import "core:http"
 import "core:log"
+import "core:nbio"
 
 import openssl_http "vendor:openssl/http"
 
@@ -19,9 +20,15 @@ main :: proc() {
 	http.client_init(&c)
 	defer http.client_destroy(&c)
 
-	res, err := http.request_and_wait(&c, "https://example.com")
+	file, oerr := nbio.open_sync("microui")
+	assert(oerr == nil)
+
+	res, err := http.request_and_wait(&c, "https://httpbin.org/post", {
+		method = .Post,
+		body = { content = file },
+	})
 	if err != nil {
-		fmt.panicf("could not GET: %v", err)
+		fmt.panicf("could not POST: %v", err)
 	}
 	defer http.incoming_response_destroy(res)
 
