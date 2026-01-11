@@ -7,6 +7,7 @@ You can run this with the netcat utility as the client like so: `nc 127.0.0.1 12
 */
 package main
 
+import "core:log"
 import "core:fmt"
 import "core:net"
 import "core:nbio"
@@ -15,7 +16,7 @@ import "core:container/xar"
 Server :: struct {
 	socket:      net.TCP_Socket,
 	// Xar is used in favor of `[dynamic]Connection` so pointers are stable.
-	connections: xar.Xar(Connection, 4),
+	connections: xar.Array(Connection, 4),
 }
 
 Connection :: struct {
@@ -25,6 +26,8 @@ Connection :: struct {
 }
 
 main :: proc() {
+	context.logger = log.create_console_logger()
+
 	err := nbio.acquire_thread_event_loop()
 	fmt.assertf(err == nil, "Could not initialize nbio: %v", err)
 	defer nbio.release_thread_event_loop()
@@ -55,18 +58,18 @@ on_accept :: proc(op: ^nbio.Operation, server: ^Server) {
 	})
 	assert(alloc_err == nil)
 
-	nbio.recv_poly(op.accept.client, connection.buf[:], connection, on_recv)
+	nbio.recv_poly(op.accept.client, {connection.buf[:]}, connection, on_recv)
 }
 
 on_recv :: proc(op: ^nbio.Operation, connection: ^Connection) {
 	fmt.assertf(op.recv.err == nil, "Error receiving from client: %v", op.recv.err)
 
-	nbio.send_poly(connection.sock, connection.buf[:op.recv.received], connection, on_sent)
+	nbio.send_poly(connection.sock, {connection.buf[:op.recv.received]}, connection, on_sent)
 }
 
 on_sent :: proc(op: ^nbio.Operation, connection: ^Connection) {
 	fmt.assertf(op.send.err == nil, "Error sending to client: %v", op.send.err)
 
 	// Accept the next message, to then ultimately echo back again.
-	nbio.recv_poly(connection.sock, connection.buf[:], connection, on_recv)
+	nbio.recv_poly(connection.sock, {connection.buf[:]}, connection, on_recv)
 }
