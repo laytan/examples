@@ -19,7 +19,7 @@ package main
 
 
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 SQUARE_SIZE             :: 20
 

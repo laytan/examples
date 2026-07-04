@@ -19,7 +19,7 @@ package game_of_life
 
 
 import time "core:time"
-import rl   "vendor:raylib"
+import rl   "vendor:raylib/v55"
 
 
 Window :: struct {

@@ -15,7 +15,7 @@
 
 package raylib_examples
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 CircleWave :: struct {
 	position: rl.Vector2,

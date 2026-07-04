@@ -28,7 +28,7 @@ package raylib_examples
 *
 ********************************************************************************************/
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 SCREEN_WIDTH  :: 800
 SCREEN_HEIGHT :: 450

@@ -1,7 +1,7 @@
 package box2d
 
 import b2 "vendor:box2d"
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 // Original: https://github.com/erincatto/box2d-raylib
 

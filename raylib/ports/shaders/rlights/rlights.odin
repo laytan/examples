@@ -1,6 +1,6 @@
 package rlights
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 MAX_LIGHTS :: 4
 

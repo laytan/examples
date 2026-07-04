@@ -17,7 +17,7 @@
 
 package raylib_examples
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 MOUSE_SCALE_MARK_SIZE :: 12
 

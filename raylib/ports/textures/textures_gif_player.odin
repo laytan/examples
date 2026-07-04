@@ -1,6 +1,6 @@
 package main
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 MAX_FRAME_DELAY :: 20
 MIN_FRAME_DELAY :: 1

@@ -17,7 +17,7 @@
 
 package raylib_examples
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 FOVY_PERSPECTIVE :: 45
 WIDTH_ORTHOGRAPHIC :: 10

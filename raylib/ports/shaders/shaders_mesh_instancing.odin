@@ -2,7 +2,7 @@ package main
 
 import    "rlights"
 
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 MAX_INSTANCES :: 10_000
 

@@ -18,7 +18,7 @@
 package raylib_examples
 
 import "core:math/linalg"
-import rl "vendor:raylib"
+import rl "vendor:raylib/v55"
 
 //----------------------------------------------------------------------------------
 // Defines and Macros
