@@ -40,7 +40,7 @@ main :: proc() {
 		//----------------------------------------------------------------------------------
 		if rl.IsKeyPressed(.H) {
 			if rl.IsCursorHidden() {
-				rl.ShowCursor()
+				// rl.ShowCursor()
 			} else {
 				rl.HideCursor()
 			}
