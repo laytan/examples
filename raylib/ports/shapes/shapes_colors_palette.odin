@@ -29,7 +29,7 @@ package raylib_examples
 *
 ********************************************************************************************/
 
-import rl "vendor:raylib/v55"
+import rl "vendor:raylib/v6"
 
 Color_And_Name :: struct{
 	color: rl.Color,

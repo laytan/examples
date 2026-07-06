@@ -10,7 +10,7 @@ import "core:nbio"
 import "core:log"
 import "core:strings"
 
-import rl "vendor:raylib/v55"
+import rl "vendor:raylib/v6"
 
 Texture :: struct {
 	path:   cstring,
